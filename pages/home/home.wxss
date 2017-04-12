@@ -1,0 +1,65 @@
+/* pages/home/home.wxss */
+
+/*轮播图*/
+
+swiper {
+  margin-top: 0px;
+  height: 380rpx;
+}
+
+.slide-image {
+  width: 750rpx;
+  height: 450rpx;
+}
+
+/*货架分类*/
+
+.shelf-nav {
+  display: flex; /*设置 display: flex; 将它变为 flex 布局的元素*/
+  flex-wrap: wrap; /*当子元素总宽度超过父元素宽度时换行显示*/
+  padding: 30rpx;
+  font-size: 9pt;
+}
+
+.shelf-nav-item {
+  width: 25%; /*因为每行显示 4 个货架，所以宽度设置为 25%*/
+  margin-bottom: 20rpx;
+  text-align: center; /*让它中间的图片和标题居中显示*/
+}
+
+.shelf-nav-item__image {
+  width: 130rpx; /*在视觉稿中量取图片宽高为 130px*/
+  height: 130rpx; /*于是设置 width 和 height 都设置为130rpx*/
+  border-radius: 50%; /*把图片设置成圆形*/
+  border: 1px solid #d9d9d9; /*加上外边框*/
+}
+
+.shelf-nav-item__text {
+    display: block;
+}
+
+/*主题*/
+
+.scroll-view-nav {
+  display: flex; /*设置 display: flex; 将它变为 flex 布局的元素*/
+  flex-wrap: wrap; /*当子元素总宽度超过父元素宽度时换行显示*/
+  padding: 0rpx 0rpx 30rpx 0rpx;
+}
+
+.scroll-view_H {
+    height: 200rpx; 
+    white-space: nowrap;   
+    display: block; 
+}
+
+.scroll-view-item_H {
+    height: 200rpx;
+    width: 500rpx;
+    display: inline-block;
+    padding:0rpx 30rpx 30rpx 30rpx;
+}
+
+.scroll-view-item__image {
+  width: 500rpx; /*在视觉稿中量取图片宽高为 130px*/
+  border-radius: 5%; /*把图片设置成圆形*/
+}
