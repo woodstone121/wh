@@ -20,7 +20,6 @@ Page({
       .then(homeItems => this.setData({ homeItems }))
       .catch(console.error);
     
-    
   },
   onShow:function(){
     // 页面显示
