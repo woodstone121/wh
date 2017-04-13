@@ -1,5 +1,4 @@
 /* pages/detail/detail.wxss */
-/* pages/detail/detail.wxss */
 
 /*轮播图*/
 
@@ -57,13 +56,21 @@ swiper {
   display: flex;
   justify-content: space-around;
   font-size: 10pt;
-  padding: 10px 0;
+  padding: 10px 0 0 0;
   background-color: #fff;
-  border-top: #e5e5e5 solid 1px;
+  border-top: #e5e5e5 solid 10px;
+  border-bottom: #e5e5e5 solid 1px;
 }
 
 #nav-bar-true {
-  border-bottom: 2px #09bb07 solid;
+  padding-top: 6px;
+  height: 20px;
+  border-bottom: 2px #000 solid;
+}
+
+#nav-bar-false {
+  padding-top: 6px;
+  height: 20px;
 }
 
 /*购物车底部结算按钮，固定*/

@@ -6,7 +6,34 @@ Page({
     indicatorDots: true,
     autoplay: true,
     interval: 3000,
-    duration: 1000
+    duration: 1000,
+    hiddenDetail: false,
+    hiddenSpecification: true,
+    hiddenBrand: true
+  },
+  toDetail:function(){
+    console.log("to detail");
+    this.setData({ 
+        hiddenDetail: false,
+        hiddenSpecification: true,
+        hiddenBrand: true
+      })
+  },
+  toSpecification:function(){
+    console.log("to specification");
+    this.setData({ 
+        hiddenDetail: true,
+        hiddenSpecification: false,
+        hiddenBrand: true
+      })
+  },
+  toBrand:function(){
+    console.log("to brand");
+    this.setData({ 
+        hiddenDetail: true,
+        hiddenSpecification: true,
+        hiddenBrand: false
+      })
   },
   onLoad:function(options){
     var that = this;
@@ -15,19 +42,7 @@ Page({
       .equalTo('productId', options.productId)
       .find()
       .then(items => this.setData({ 
-        productItem: items[0].object, 
-        goodsPicsInfo: function(items) {
-          var goodsPicsInfo = []
-          var goodspic = items[0].object.swiper
-          var goodspics = goodspic.substring(0, goodspic.length - 1) 
-          var goodspicsArr = goodspics.split("#") 
-          for (var i = 0; i < goodspicsArr.length; i++) {
-            goodsPicsInfo.push({
-              "picurl": goodspicsArr[i]
-            })
-          }
-          return goodsPicsInfo;
-        }
+        productItem: items[0]
       }))
       .catch(console.error);
   },

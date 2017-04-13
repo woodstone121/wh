@@ -1,9 +1,9 @@
 <!--pages/detail/detail.wxml-->
 <view>
   <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
-    <block wx:for="{{goodsPicsInfo}}" wx:key="procuctId">
+    <block wx:for="{{productItem.swiper}}" wx:key="procuctId">
       <swiper-item>
-        <image src="{{item.picurl}}" class="slide-image" />
+        <image src="{{item}}" class="slide-image" />
       </swiper-item>
     </block>
   </swiper>
@@ -26,9 +26,9 @@
 <view class="shopping-detail">
   <view class="shopping-detail-nav">
     <view class="shopping-detail-nav-bar">
-      <view bindtap="toDetail" id="nav-bar-{{!hiddenDetail ? true : 0}}">细节描述</view>
-      <view bindtap="toSpecification" id="nav-bar-{{!hiddenSpecification ? true : 0}}">规格参数</view>
-      <view bindtap="toBrand" id="nav-bar-{{!hiddenBrand ? true : 0}}">品牌描述</view>
+      <view bindtap="toDetail" id="nav-bar-{{!hiddenDetail ? true : false}}">细节描述</view>
+      <view bindtap="toSpecification" id="nav-bar-{{!hiddenSpecification ? true : false}}">规格参数</view>
+      <view bindtap="toBrand" id="nav-bar-{{!hiddenBrand ? true : false}}">品牌描述</view>
     </view>
   </view>
 </view>
@@ -54,7 +54,7 @@
 </view>
 
 <!--马上购买弹窗，sku商品组合弹窗-->
-<view class="modal">
+<!--<view class="modal">
   <view class="modal-mask {{maskVisual}}" bindtap="cascadeDismiss"></view>
   <view animation="{{animationData}}" class="pay-now">
     <view class="pay-now-detail">
@@ -78,11 +78,11 @@
       <text class="pay-now-footer-pay">马上购买</text>
     </view>
   </view>
-</view>
+</view>-->
 
 <!--加入购物车弹窗-->
 <!--此处代码与马上购买按钮处重复，后期考虑改成模板-->
-<view class="modal">
+<!--<view class="modal">
   <view class="modal-mask {{maskVisual}}" bindtap="cascadeDismiss"></view>
   <view animation="{{animationData}}" class="to-cart">
     <view class="to-cart-detail">
@@ -106,4 +106,4 @@
       <text class="to-cart-footer-pay">加入购物车</text>
     </view>
   </view>
-</view>
+</view>-->
