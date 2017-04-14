@@ -1,4 +1,5 @@
 // pages/detail/detail.js
+var WxParse = require('../../wxParse/wxParse.js');
 const AV = require('../../libs/av-weapp-min');
 
 Page({
@@ -9,7 +10,11 @@ Page({
     duration: 1000,
     hiddenDetail: false,
     hiddenSpecification: true,
-    hiddenBrand: true
+    hiddenBrand: true,
+    payNow: true,
+    maskVisual: 'hidden',
+    specification: '',
+    description: ''
   },
   toDetail:function(){
     console.log("to detail");
@@ -41,10 +46,26 @@ Page({
     new AV.Query('ProductItem')
       .equalTo('productId', options.productId)
       .find()
-      .then(items => this.setData({ 
-        productItem: items[0]
-      }))
+      .then(items => {
+        return that.loadData(items[0]);
+      })
       .catch(console.error);
+  },
+  loadData:function(data){
+    var productItem = data;
+    var obj = JSON.parse(JSON.stringify(productItem));
+    var specification = obj.specification;
+    var description = obj.description;
+    this.setData({ 
+        productItem: productItem
+    })
+    this.setData({ 
+        specification: specification,
+        description: description
+    })
+
+    WxParse.wxParse('specification', 'html', specification, this, 10);
+    WxParse.wxParse('description', 'html', description, this, 10);
   },
   onReady:function(){
     // 页面渲染完成
