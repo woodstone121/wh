@@ -1,5 +1,7 @@
-// pages/detail/detail.js
+// pages/introduction/introduction.js
+
 var Bmob = require('../../utils/bmob.js');
+var Util = require('../../utils/util.js');
 
 Page({
 
@@ -7,43 +9,42 @@ Page({
    * 页面的初始数据
    */
   data: {
-    message: {}
+    article: {}
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
     var that = this
-    var id = options.id
+    var num = options.number
 
-    var that = this
-    var Message = Bmob.Object.extend("Message");
-    var query = new Bmob.Query(Message);
-    query.equalTo("objectId", id);
-
+    var Category = Bmob.Object.extend("Category");
+    var query = new Bmob.Query(Category);
+    query.equalTo("number", parseInt(num));
     query.find({
       success: function (results) {
         // 循环处理查询到的数据
         console.log(JSON.stringify(results))
         if (results.length > 0) {
           var item = results[0]
-          var message = {}
-          message.title = item.get("title")
-          message.content = item.get("content")
-          message.avatarUrl = item.get("avatarUrl")
-          message.publisher = item.get("publisher")
-          message.images = item.get("images")
-          message.id = item.id
-          message.date = item.createdAt
+          var article = {}
+          article.title = item.get("title") ? item.get("title") : null
+          article.topImage = item.get("topImage") ? item.get("topImage")._url : null
+          article.topContent = item.get("topContent") ? item.get("topContent") : null
+          article.centerImage = item.get("centerImage") ? item.get("centerImage")._url : null
+          article.centerContent = item.get("centerContent") ? item.get("centerContent") : null
+          article.bottomImage = item.get("bottomImage") ? item.get("bottomImage")._url : null
+          article.bottomContent = item.get("bottomContent") ? item.get("bottomContent") : null
+
           that.setData({
-            message: message
+            article: article
           })
         }
       },
       error: function (error) {
         console.log("查询失败: " + error.code + " " + error.message);
+        Util.showErrorTip("查询失败: " + error.code + " " + error.message)
       }
     });
   },

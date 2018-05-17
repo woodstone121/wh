@@ -1,0 +1,26 @@
+<!--pages/findMyItem/findMyItem.wxml-->
+<!-- 搜索 -->
+<view class='search-wrap'>
+  <view class='input-wrap'>
+    <image class='search-icon' src='/images/search_icon@2x.png' mode='aspectFit'></image>
+    <input class='search-input' placeholder='我要找商品' placeholder-style='color:#999' confirm-type='search'></input>
+  </view>
+  <view class='cancle-text' bindtap="navigateBack">取消</view>
+</view>
+
+<!-- 语音搜索页 -->
+<view class='hot-Search'>
+  <text class='hot-search-title'>您可以这样说</text>
+  <view wx:for="{{hotSearchItem}}" wx:key="id">
+    <view class="hot-search-item animated fadeInUp" style="padding-top:{{index == 0?'50rpx':'20rpx'}};animation-delay:{{index/10}}s">{{item}}</view>
+  </view>
+</view>
+<image src='/images/wave.gif' style='width:750rpx;margin-top:180rpx' mode='widthFix' hidden="{{!recording}}"></image>
+<view class='flex-center voice-btn-wrap'>
+  <text class='tips-text' wx:if="{{recording}}" style="color:{{tips=='手指松开 取消搜索'?'red':'#999'}}">{{tips}}</text>
+  <view class='flex-center voice-btn' catchtouchstart='startRecord' catchtouchend='stopRecord' catchtouchmove='recordBtnTouchM' style="background:{{recording?'#eaeaea':'white'}}">
+    <image class='voice-on-icon' src='/images/voice_on_btn_icon@2x.png' mode='aspectFit' hidden="{{recording}}"></image>
+    <image class='voice-push-icon' src='/images/voice_pushdown_on_btn_icon@2x.png' mode='aspectFit' hidden="{{!recording}}"></image>
+    <view class='voice-btn-text'>按住 说出要找的商品</view>
+  </view>
+</view>
